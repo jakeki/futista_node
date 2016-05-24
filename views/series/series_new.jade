@@ -1,0 +1,42 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Create new Series
+
+      form.form-horizontal(action='/series/create', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+
+        .form-group
+          label.col-sm-3.control-label(for='series_id') Series id
+          .col-sm-7
+            input.form-control(type='text', name='series_id', id='series_id')
+        .form-group
+          label.col-sm-3.control-label(for='season') Season
+          .col-sm-7
+            input.form-control(type='text', name='season', id='season')
+        .form-group
+          label.col-sm-3.control-label(for='season_name') Season Name
+          .col-sm-7
+            input.form-control(type='text', name='season_name', id='season_name')
+        .form-group
+          label.col-sm-3.control-label(for='season_shortname') Season ShortName
+          .col-sm-7
+            input.form-control(type='text', name='season_shortname', id='season_shortname')
+        .form-group
+          label.col-sm-3.control-label(for='halftime_length') Halftime lenght
+          .col-sm-7
+            input.form-control(type='number', name='halftime_length', id='halftime_length')
+        .form-group
+          label.col-sm-3.control-label(for='players_field') Players on Field
+          .col-sm-7
+            input.form-control(type='number', name='players_field', id='players_field')
+        .form-group
+          label.col-sm-3.control-label(for='players_ot_bench') Players on the bench
+          .col-sm-7
+            input.form-control(type='number', name='players_ot_bench', id='players_ot_bench')
+        .form-group
+          .col-sm-offset-3.col-sm-4
+            button.btn.btn.btn-primary(type='submit')
+              i.fa.fa-pencil
+              | Create Series

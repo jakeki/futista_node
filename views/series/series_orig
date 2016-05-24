@@ -1,0 +1,66 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Series Information
+
+    each serie in series
+        li
+          = serie.season_name
+          |  (
+          =  serie.season
+          |)  Players
+          = serie.players_field
+          | /
+          = serie.players_ot_bench
+          |  Haftime length
+          = serie.halftime_length
+
+
+  form.form-horizontal(action='/series', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='series_id') Series id
+      .col-sm-7
+        input.form-control(type='text', name='series_id', id='series_id', value='#{series.series_id}')
+    .form-group
+      label.col-sm-3.control-label(for='season') Season
+      .col-sm-7
+        input.form-control(type='text', name='season', id='season', value='#{series.season}')
+    .form-group
+      label.col-sm-3.control-label(for='season_name') Season Name
+      .col-sm-7
+        input.form-control(type='text', name='season_name', id='season_name', value='#{series.season_name}')
+    .form-group
+      label.col-sm-3.control-label(for='season_shortname') Season ShortName
+      .col-sm-7
+        input.form-control(type='text', name='season_shortname', id='season_shortname', value='#{series.season_shortname}')
+    .form-group
+      label.col-sm-3.control-label(for='halftime_length') Halftime lenght
+      .col-sm-7
+        input.form-control(type='number', name='halftime_length', id='halftime_length', value='#{series.halftime_length}')
+    .form-group
+      label.col-sm-3.control-label(for='players_field') Players on Field
+      .col-sm-7
+        input.form-control(type='number', name='players_field', id='players_field', value='#{series.players_field}')
+    .form-group
+      label.col-sm-3.control-label(for='players_ot_bench') Players on the bench
+      .col-sm-7
+        input.form-control(type='number', name='players_ot_bench', id='players_ot_bench', value='#{series.players_ot_bench}')
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          | Update Profile
+
+  .page-header
+    h3 Delete Series
+
+  form.form-horizontal(action='/series/delete', method='POST')
+    .form-group
+      p.col-sm-offset-3.col-sm-4 You can delete series, but keep in mind this action is irreversible.
+      input(type='hidden', name='_csrf', value=_csrf)
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn-danger(type='submit')
+          i.fa.fa-trash
+          | Delete Series
