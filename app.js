@@ -18,6 +18,8 @@ var expressValidator = require('express-validator');
 var sass = require('node-sass-middleware');
 var multer = require('multer');
 var upload = multer({ dest: path.join(__dirname, 'uploads') });
+var toastr = require('express-toastr');
+
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -33,6 +35,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var seriesController = require('./controllers/series');
 
 /**
  * API keys and Passport configuration.
@@ -43,6 +46,9 @@ var passportConfig = require('./config/passport');
  * Create Express server.
  */
 var app = express();
+
+
+
 
 /**
  * Connect to MongoDB.
@@ -81,7 +87,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(toastr());
 app.use(function(req, res, next) {
+  //if (req.path === '/series') {
   if (req.path === '/api/upload') {
     next();
   } else {
@@ -123,6 +131,12 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+app.get('/series', seriesController.getSeries);
+app.get('/series/edit/:id', seriesController.getOneSerie);
+app.post('/series/edit', seriesController.postUpdateSeries);
+app.get('/series/create', seriesController.getCreateSeries);
+app.post('/series/create', seriesController.postCreateSeries);
+app.post('/series/delete/:id', seriesController.postDeleteSeries);
 
 /**
  * API examples routes.
@@ -221,8 +235,32 @@ app.use(errorHandler());
 /**
  * Start Express server.
  */
-app.listen(app.get('port'), function() {
+var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 
+
+/**
+* Create sockets
+
+var server = require('http').createServer(app);
+var socket = require('socket.io')(server);
+var io = socket.listen(server);
+********/
+// var socketio  = require('socket.io');
+
+var io        = require('socket.io').listen(server);
+
+
+io.sockets.on('connection', function (socket) {
+  console.log('socket connected');
+  socket.on('disconnect', function(){
+    console.log('socket disconnected');
+  });
+
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log('data my other event', data);
+  });
+});
 module.exports = app;

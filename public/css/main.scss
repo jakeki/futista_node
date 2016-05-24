@@ -5,7 +5,8 @@
 @import "lib/font-awesome/font-awesome";
 
 @import "themes/default/default";
-
+//@import "node_modules/toastr/toastr.min.css";
+//@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 // Scaffolding
 // -------------------------
 
@@ -68,4 +69,10 @@ textarea {
 
 .fa {
   margin-right: 6px;
+}
+
+// Futista orange part
+// -------------------------
+.navbar-brand .tracker, h1 .tracker {
+    color: orange;
 }

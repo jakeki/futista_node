@@ -5,7 +5,9 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='csrf-token', content=_csrf)
-    title #{title} - Hackathon Starter
+    meta(name='description' content='FutiSta is the football statistics collection service. Easy to use, lightweight.')
+    meta(name='author' content='FutiSta / jakeki')
+    title #{title} - jakeki | FutiSta
     link(rel='shortcut icon', href='/favicon.png')
     link(rel='stylesheet', href='/css/main.css')
   body
@@ -19,7 +21,19 @@ html
 
     script(src='/js/lib/jquery-2.2.0.min.js')
     script(src='/js/lib/bootstrap.min.js')
+    //script(window.jQuery = window.$ = require('jquery'));
+    //script(src='/node_modules/toastr/toastr.min.js')
+    script(src="https://cdn.socket.io/socket.io-1.4.5.js")
+    script.
+      var socket = io();
+      // , {secure: true}
+      socket.on('connection', function(data) {
+            console.log('socket connected');
+      });
+
     script(src='/js/main.js')
+
+
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
