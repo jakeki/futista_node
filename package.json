@@ -1,9 +1,9 @@
 {
-  "name": "hackathon-starter",
-  "version": "3.5.0",
+  "name": "Futista_node",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/jakeki/futista_node.git"
   },
   "scripts": {
     "start": "node app.js",

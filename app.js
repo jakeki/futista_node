@@ -240,16 +240,7 @@ var server = app.listen(app.get('port'), function() {
 });
 
 
-/**
-* Create sockets
-
-var server = require('http').createServer(app);
-var socket = require('socket.io')(server);
-var io = socket.listen(server);
-********/
-// var socketio  = require('socket.io');
-
-var io        = require('socket.io').listen(server);
+var io = require('socket.io').listen(server);
 
 
 io.sockets.on('connection', function (socket) {
