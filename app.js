@@ -18,7 +18,7 @@ var expressValidator = require('express-validator');
 var sass = require('node-sass-middleware');
 var multer = require('multer');
 var upload = multer({ dest: path.join(__dirname, 'uploads') });
-var toastr = require('express-toastr');
+//var toastr = require('express-toastr');
 
 
 /**
@@ -87,7 +87,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(toastr());
+//app.use(toastr());
 app.use(function(req, res, next) {
   //if (req.path === '/series') {
   if (req.path === '/api/upload') {
