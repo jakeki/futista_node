@@ -81,7 +81,7 @@ console.log("POSTseriesCreate name after: ", req.body.season_name)
  */
 exports.getSeries = function(req, res) {
   console.log("GETSERIES")
-  req.toastr.success('toast')
+  //req.toastr.success('toast')
   Series.find(function(err, series) {
     if (err) return next(err);
       res.render("./series/series", {
