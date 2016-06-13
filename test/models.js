@@ -87,7 +87,7 @@ describe('Series Model', function() {
   });
 
   it('should delete a series', function(done) {
-    User.remove({ id: '99999' }, function(err) {
+    User.remove({ series_id: '99999' }, function(err) {
       if (err) return done(err);
       done();
     });
