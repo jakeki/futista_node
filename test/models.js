@@ -79,9 +79,9 @@ describe('Series Model', function() {
   });
 
   it('should find series by id', function(done) {
-    Series.findOne({ id: '99999' }, function(err, user) {
+    Series.findOne({ series_id: '99999' }, function(err, series) {
       if (err) return done(err);
-      series.id.should.equal('99999');
+      series.series_id.should.equal('99999');
       done();
     });
   });
