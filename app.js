@@ -18,6 +18,10 @@ var expressValidator = require('express-validator');
 var sass = require('node-sass-middleware');
 var multer = require('multer');
 var upload = multer({ dest: path.join(__dirname, 'uploads') });
+var bunyan = require('bunyan');
+var log = bunyan.createLogger({name: 'futista_node'});
+var debug = require('debug');
+
 //var toastr = require('express-toastr');
 
 
@@ -56,6 +60,7 @@ var app = express();
 mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  log.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
 
@@ -237,6 +242,7 @@ app.use(errorHandler());
  */
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
+  log.info('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 
 
@@ -245,13 +251,16 @@ var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function (socket) {
   console.log('socket connected');
+  log.info('socket connected bunyan')
   socket.on('disconnect', function(){
     console.log('socket disconnected');
+    log.info('socket disconnected bunyan')
   });
 
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data) {
     console.log('data my other event', data);
+    log.info('bunyan socket other event')
   });
 });
 module.exports = app;
