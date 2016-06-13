@@ -81,7 +81,7 @@ describe('Series Model', function() {
   it('should find series by id', function(done) {
     Series.findOne({ series_id: '99999' }, function(err, series) {
       if (err) return done(err);
-      series.series_id.should.equal('99999');
+      series.series_id.should.equal(99999);
       done();
     });
   });
