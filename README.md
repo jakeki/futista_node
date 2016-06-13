@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/jakeki/futista_node.svg?style=svg)](https://circleci.com/gh/jakeki/futista_node)
+[![CircleCI](https://circleci.com/gh/jakeki/futista_node.svg?style=shield)](https://circleci.com/gh/jakeki/futista_node)
 
 FutiSta demo and training to learn node.js, Express, sockets.io etc.
 Originally created a proof of concept football match tool with you can collect game statistics online. This was done with PHP, MySQL, jQuery, AJAX, JS etc.
@@ -13,8 +13,6 @@ Please note that all development will be done after normal work hours so it migh
 screencast by Alex Ford that teaches Node and Express from scratch. Alternatively,
 here is another great tutorial for complete beginners - [Getting Started With Node.js, Express, MongoDB](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/).
 
-
 Credits to this good boilerplate that has saved a lot of time in the beginning [sahat's Hackathon starter](https://github.com/sahat/hackathon-starter.git)
--------
 
 Copyright (c) 2016 jaken / jakeki / Allecti
