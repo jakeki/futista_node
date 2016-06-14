@@ -14,21 +14,28 @@
       ul.nav.navbar-nav
         li(class=(title == 'Home') ? 'active' : undefined)
           a(href='/') Home
-        li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api') API Examples
+        li.dropdown
+               a(href='#',data-toggle='dropdown').dropdown-toggle Tools
+                 b.caret
+               ul.dropdown-menu
+                 li: a(href='/series') Define series
+                 li: a(href='#') Define teams
+                 li: a(href='#') Define players
+                 li: a(href='#') Define games
+                 li: a(href='#') Define Quick start game
+                 li.divider
+                 li: a(href='#') Statistics
         li.dropdown
                a(href='#',data-toggle='dropdown').dropdown-toggle About
                  b.caret
                ul.dropdown-menu
-                 li: a(href='#') Tietoa
-                 li: a(href='#') Ota yhteyttä
-                 li: a(href='#') Hinnasto
+                 li: a(href='#') Information about FutiSta
+                 li: a(href='/contact') Contact
+                 li: a(href='#') Pricing
                  li.divider
-                 li: a(href='#') Uutiset
+                 li: a(href='#') News
 
 
-        li(class=(title == 'Contact') ? 'active' : undefined)
-          a(href='/contact') Contact
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)
